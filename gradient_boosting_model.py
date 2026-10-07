@@ -2,22 +2,28 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 # check this HistGradientBoostingClassifier and remember to check the learned weights
-def train_gradient_boosting(X_train, y_train):
+def train_gradient_boosting( X_train,
+    y_train,
+    n_estimators,
+    learning_rate,
+    max_depth, random_state=40):
     """
     Train a Gradient Boosting classifier.
 
     Parameters:
     X_train 
     y_train 
-
+    n_estimators
+    learning_rate
+    max_depth
     Returns:
     model: Trained Gradient Boosting model.
     """
-    # check hyperparameters and adjust them as needed
-    model = GradientBoostingClassifier(  n_estimators=100,
-        learning_rate=0.1,
-        max_depth=3,
-        random_state=42)
+    # Check hyperparameters and adjust them as needed , learning rate 0.1 and max depth of 3 looks best as of now, random_state is set for reproducibility
+    model = GradientBoostingClassifier(n_estimators=n_estimators,
+        learning_rate=learning_rate,
+        max_depth=max_depth,
+        random_state=40)
     model.fit(X_train, y_train)
     return model
 

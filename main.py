@@ -1,8 +1,16 @@
 from preprocessing import load_and_preprocess
 from multinomial_naive_bayes import train_multinomial_nb, evaluate_multinomial_nb
 from gradient_boosting_model import train_gradient_boosting, evaluate_gradient_boosting
+import pandas as pd
+# import matplotlib.pyplot as plt
 
 X_train, X_test, y_train, y_test, vec = load_and_preprocess()
+
+learning_rate = [0.01, 0.1, 0.2, 0.3, 0.4, 0.5]
+max_depth = [2, 3, 4, 5, 6, 7]
+n_estimators = [50, 100, 150, 200, 250, 300]
+
+results = []
 
 nb_model = train_multinomial_nb(
     X_train,
@@ -15,25 +23,43 @@ naive_accuracy, naive_report = evaluate_multinomial_nb(
     y_test
 )
 
-gb_model = train_gradient_boosting(
-    X_train,
-    y_train
-)
+for lr in learning_rate:
+    for md in max_depth:
+        for ne in n_estimators:
+            print(f"Training Gradient Boosting with learning_rate={lr}, max_depth={md}, n_estimators={ne}")
+            gb_model = train_gradient_boosting(
+                X_train,
+                y_train,
+                n_estimators=ne,
+                learning_rate=lr,
+                max_depth=md,
+                random_state=40
+            )
 
-gradient_boost_accuracy, gradient_boost_report = evaluate_gradient_boosting(
-    gb_model,
-    X_test,
-    y_test
-)
+            gradient_boost_accuracy, gradient_boost_report = evaluate_gradient_boosting(
+                gb_model,
+                X_test,
+                y_test
+            )
+
+            results.append({
+                "learning_rate": lr,
+                "max_depth": md,
+                "n_estimators": ne,
+                "accuracy": gradient_boost_accuracy
+            })
+
+results_df = pd.DataFrame(results)
+
+print(results_df)
+
+best_model = results_df.loc[results_df["accuracy"].idxmax()]
+
+print("===== BEST GRADIENT BOOSTING MODEL =====")
+print(best_model)
 
 print("===== MODEL COMPARISON =====")
 print('Multinomial Naive Bayes:', naive_accuracy)
 print('---------------------------------')
 print('Multimodal Naive bayes report:')
 print(naive_report)
-
-print('---------------------------------')
-print('Gradient Boosting:', gradient_boost_accuracy)
-print('---------------------------------')
-print('Gradient Boosting report:')
-print(gradient_boost_report)
