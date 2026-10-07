@@ -34,10 +34,10 @@ def evaluate_gradient_boosting(model, X_test, y_test):
     dict: Dictionary containing accuracy and classification report.
     """
     y_pred = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
+    gradient_boost_accuracy = accuracy_score(y_test, y_pred)
+    gradient_boost_report = classification_report(y_test, y_pred)
     
     return {
-        "accuracy": accuracy,
-        "classification_report": report
+       gradient_boost_accuracy,
+       gradient_boost_report
     }

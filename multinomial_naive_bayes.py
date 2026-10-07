@@ -29,10 +29,11 @@ def  evaluate_multinomial_nb(model, X_test, y_test):
     dict: Dictionary containing accuracy and classification report.
     """
     y_pred = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
-    
+    naive_accuracy = accuracy_score(y_test, y_pred)
+    naive_report = classification_report(y_test, y_pred)
+
+    print("Multinomial Naive Bayes Classification accuracy in multimodal_naive_bayes:", naive_accuracy)
     return {
-        "accuracy": accuracy,
-        "classification_report": report
+        naive_accuracy,
+        naive_report
     }
