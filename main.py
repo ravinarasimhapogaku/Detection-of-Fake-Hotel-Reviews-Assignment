@@ -1,4 +1,4 @@
-from mcNemartest import mcnemar_test
+from mcnemar_test import mcnemar_test
 from preprocessing import load_and_preprocess
 from multinomial_naive_bayes import train_multinomial_nb, evaluate_multinomial_nb
 from gradient_boosting_model import train_gradient_boosting, evaluate_gradient_boosting
@@ -30,7 +30,7 @@ gb_model = train_gradient_boosting(
     learning_rate=learning_rate,
     max_depth=max_depth,
     random_state=40
-            )
+)
 
 gradient_boost_accuracy, gradient_boost_report = evaluate_gradient_boosting(
     gb_model,
@@ -69,19 +69,29 @@ print('---------------------------------')
 print('Multimodal Naive bayes report:')
 print(naive_report)
 
-# Get predictions for exactly the same test examples
-nb_pred = nb_model.predict(X_test)
-gb_pred = gb_model.predict(X_test)
-dt_pred = decision_tree.predict(X_test)
+# Get predictions for exactly the same test set
+naive_base_pred = nb_model.predict(X_test)
+gradient_boost_pred = gb_model.predict(X_test)
+decision_tree_pred = decision_tree.predict(X_test)
 
 # Compare Gradient Boosting with each baseline
 gb_nb_table, gb_nb_p = mcnemar_test(
-    y_test, gb_pred, nb_pred,
+    y_test, gradient_boost_pred, naive_base_pred,
     "Gradient Boosting", "Naive Bayes"
 )
 
 gb_dt_table, gb_dt_p = mcnemar_test(
-    y_test, gb_pred, dt_pred,
+    y_test, gradient_boost_pred, decision_tree_pred,
     "Gradient Boosting", "Decision Tree"
 )
+
+# Save a combined summary for your report
+# summary_df = pd.DataFrame(mcnemar_summary)
+# summary_df.to_csv(
+#     "mcnemar_results/mcnemar_summary.csv",
+#     index=False
+# )
+
+# print("\n===== ALL MCNEMAR RESULTS =====")
+# print(summary_df)
 
