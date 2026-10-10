@@ -1,5 +1,4 @@
 from pathlib import Path
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -24,7 +23,7 @@ def compare_models(y_test, predictions, pos_label=1, average="binary",
          for name, pred in predictions.items()}
     ).T.round(3)
 
-    print("\n===== Model comparison =====")
+    print("\n----Model comparison -----")
     print(table.to_string())
     table.to_csv(FIGURES_DIR / "model_comparison_metrics.csv")
 

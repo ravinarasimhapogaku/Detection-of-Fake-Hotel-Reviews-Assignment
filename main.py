@@ -4,8 +4,6 @@ from preprocessing import load_and_preprocess
 from multinomial_naive_bayes import train_multinomial_nb, evaluate_multinomial_nb
 from gradient_boosting_model import train_gradient_boosting, evaluate_gradient_boosting
 from decision_tree_baseline import train_decision_tree_baseline, evaluate_decision_tree_baseline
-import pandas as pd
-import matplotlib.pyplot as plt
 
 from feature_importance_analysis import (
     top_linear_features,

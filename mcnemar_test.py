@@ -67,7 +67,7 @@ def mcnemar_test(y_true, pred_a, pred_b, name_a, name_b):
     )
 
     # Print the contingency table and result
-    print(f"\n===== {name_a} vs {name_b} =====")
+    print(f"\n----- {name_a} vs {name_b} -----")
     print(table)
     print(f"Discordant pairs: {b} and {c}")
     print(f"p-value: {p_value:.6g}")
@@ -96,7 +96,6 @@ def mcnemar_test(y_true, pred_a, pred_b, name_a, name_b):
 
     plt.tight_layout()
 
-    # Folder containing this Python file
     BASE_DIR = Path(__file__).resolve().parent
 
     # Exact output directory
@@ -115,7 +114,7 @@ def mcnemar_test(y_true, pred_a, pred_b, name_a, name_b):
     plt.show()
     plt.close()
 
-    # Save the individual 2x2 table
+    # Save the individual 2 by 2 table
     table.to_csv(RESULTS_DIR/filename.replace(".png", "_table.csv"))
 
     # Save summary information
