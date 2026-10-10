@@ -1,11 +1,11 @@
 Model,Class,Feature,Score
-Multinomial Naive Bayes,AI-generated,service was,3.5998073813056815
-Multinomial Naive Bayes,AI-generated,hotelname is,3.5800047540095026
-Multinomial Naive Bayes,AI-generated,the hotelname,3.4856940745382605
-Multinomial Naive Bayes,AI-generated,hotelname was,3.474644238351676
-Multinomial Naive Bayes,AI-generated,connection was,3.474644238351676
-Multinomial Naive Bayes,Human-written,told,-3.887366312908057
-Multinomial Naive Bayes,Human-written,he,-3.6993140814051184
-Multinomial Naive Bayes,Human-written,booked,-3.664222761593848
-Multinomial Naive Bayes,Human-written,said,-3.5901147894401255
-Multinomial Naive Bayes,Human-written,want,-3.550894076286845
+Multinomial Naive Bayes,AI generated,service was,3.5998073813056815
+Multinomial Naive Bayes,AI generated,hotelname is,3.5800047540095026
+Multinomial Naive Bayes,AI generated,the hotelname,3.4856940745382605
+Multinomial Naive Bayes,AI generated,hotelname was,3.474644238351676
+Multinomial Naive Bayes,AI generated,connection was,3.474644238351676
+Multinomial Naive Bayes,Human written,told,-3.887366312908057
+Multinomial Naive Bayes,Human written,he,-3.6993140814051184
+Multinomial Naive Bayes,Human written,booked,-3.664222761593848
+Multinomial Naive Bayes,Human written,said,-3.5901147894401255
+Multinomial Naive Bayes,Human written,want,-3.550894076286845

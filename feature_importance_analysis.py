@@ -18,12 +18,8 @@ def top_linear_features(
 ):
    
     features = vectorizer.get_feature_names_out()
-
-    print('features', features)
     
     classes = list(model.classes_)
-
-    print('classes', classes)
 
     if ai_label not in classes or human_label not in classes:
         raise ValueError(
