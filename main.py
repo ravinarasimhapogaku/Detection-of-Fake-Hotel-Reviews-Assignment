@@ -1,4 +1,5 @@
 from mcnemar_test import mcnemar_test
+from model_comparison import compare_models
 from preprocessing import load_and_preprocess
 from multinomial_naive_bayes import train_multinomial_nb, evaluate_multinomial_nb
 from gradient_boosting_model import train_gradient_boosting, evaluate_gradient_boosting
@@ -94,11 +95,22 @@ gb_dt_table, gb_dt_p = mcnemar_test(
 AI_LABEL = 1     
 HUMAN_LABEL = 0
 
-# Lineartyle feature analysis
+# Linear feature analysis
 nb_features = top_linear_features(
     nb_model, "Multinomial Naive Bayes", vec,
     AI_LABEL, HUMAN_LABEL
 )
 gb_features = top_tree_features(
     gb_model, "Gradient Boosting", vec
+)
+
+# Models comparison
+metrics_table = compare_models(
+    y_test,
+    {
+        "Naive Bayes": naive_base_pred,
+        "Gradient Boosting": gradient_boost_pred,
+        "Decision Tree": decision_tree_pred,
+    },
+    pos_label=1,  
 )

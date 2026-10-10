@@ -1,0 +1,4 @@
+,Precision,Recall,F1
+Naive Bayes,0.904,0.94,0.922
+Gradient Boosting,0.827,0.84,0.833
+Decision Tree,0.823,0.82,0.822
