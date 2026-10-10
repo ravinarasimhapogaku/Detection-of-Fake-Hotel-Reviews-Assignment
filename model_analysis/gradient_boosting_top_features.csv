@@ -1,0 +1,6 @@
+Model,Feature,Importance
+Gradient Boosting,rooms,0.20522491918480418
+Gradient Boosting,hotelname,0.1300871877692747
+Gradient Boosting,service,0.12136849188672913
+Gradient Boosting,the,0.10902480584183999
+Gradient Boosting,and,0.08416794916830538

@@ -111,12 +111,12 @@ def mcnemar_test(y_true, pred_a, pred_b, name_a, name_b):
         + ".png"
     )
 
-    plt.savefig(filename, dpi=300, bbox_inches="tight")
+    plt.savefig(RESULTS_DIR/filename, dpi=300, bbox_inches="tight")
     plt.show()
     plt.close()
 
     # Save the individual 2x2 table
-    table.to_csv(filename.replace(".png", "_table.csv"))
+    table.to_csv(RESULTS_DIR/filename.replace(".png", "_table.csv"))
 
     # Save summary information
     mcnemar_summary.append({

@@ -6,6 +6,11 @@ from decision_tree_baseline import train_decision_tree_baseline, evaluate_decisi
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from feature_importance_analysis import (
+    top_linear_features,
+    top_tree_features
+)
+
 X_train, X_test, y_train, y_test, vec = load_and_preprocess()
 
 learning_rate = 0.01
@@ -85,13 +90,15 @@ gb_dt_table, gb_dt_p = mcnemar_test(
     "Gradient Boosting", "Decision Tree"
 )
 
-# Save a combined summary for your report
-# summary_df = pd.DataFrame(mcnemar_summary)
-# summary_df.to_csv(
-#     "mcnemar_results/mcnemar_summary.csv",
-#     index=False
-# )
+# Feature importance
+AI_LABEL = 1     
+HUMAN_LABEL = 0
 
-# print("\n===== ALL MCNEMAR RESULTS =====")
-# print(summary_df)
-
+# Lineartyle feature analysis
+nb_features = top_linear_features(
+    nb_model, "Multinomial Naive Bayes", vec,
+    AI_LABEL, HUMAN_LABEL
+)
+gb_features = top_tree_features(
+    gb_model, "Gradient Boosting", vec
+)
